@@ -57,3 +57,16 @@ body {
     white-space: nowrap; /* Текст нэг мөрөнд байх */
 }
 
+@keyframes heart-float {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+}
+
+.heart {
+  position: fixed;
+  bottom: -10px;
+  color: #ff4d6d;
+  font-size: 20px;
+  pointer-events: none;
+  animation: heart-float 4s linear infinite;
+}
