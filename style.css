@@ -70,3 +70,30 @@ body {
   pointer-events: none;
   animation: heart-float 4s linear infinite;
 }
+
+/* 1. Хөдөлгөөний дүрмийг тодорхойлох (Зүрхний цохилт шиг) */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 77, 109, 0.7);
+  }
+  70% {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 15px rgba(255, 77, 109, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 77, 109, 0);
+  }
+}
+
+/* 2. Энэ хөдөлгөөнийг "Yes" товчлуур дээрээ холбох */
+#yes-btn, .btn a[href="yes.html"] {
+  background-color: #ff4d6d; /* Тод ягаан өнгө */
+  color: white;
+  animation: pulse 1.5s infinite; /* 1.5 секунд тутамд зогсолтгүй давтана */
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  text-decoration: none;
+}
