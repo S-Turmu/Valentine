@@ -34,42 +34,26 @@ body {
 }
 
 .btn a {
-  text-decoration: none;
-  color: #111;
-  background: #fff;
-  padding: 10px 25px;
-  border-radius: 8px;
-  box-shadow: 0.5rem 1rem 3rem hsl(0, 0%, 0%, 0.3);
+    text-decoration: none;
+    color: #111;
+    background: #fff;
+    padding: 12px 25px; /* Хэмжээг нь томруулав */
+    border-radius: 8px;
+    display: inline-block;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Зөөлөн сүүдэр */
+    transition: all 0.2s ease;
 }
 
-/* Утас дээр товчлуур зугтах зайг бэлдэх */
-.btn-wrapper {
-  position: relative;
-  width: 100%;
-  min-height: 200px; /* Товчлуур гүйх талбай */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Yes товчлуурыг хөдөлгөөнгүй, тод болгох */
+/* "Yes" товчийг ялгаруулж харуулах */
 #yes-btn {
-  text-decoration: none;
-  color: white;
-  background: #ff4d6d; /* Тод ягаан */
-  padding: 12px 30px;
-  border-radius: 8px;
-  font-weight: bold;
-  z-index: 1; /* Ард нь байх */
+    background-color: #ff4d6d !important; /* Ягаан өнгө */
+    color: white !important;
 }
 
-/* No товчлуурыг Yes-ийн дээр гаргах */
+/* "No" товчлуур absolute байх үед хэлбэрээ алдахгүй байх */
 #move-random {
-  z-index: 10; 
-  background: #fff;
-  color: #111;
-  padding: 10px 25px;
-  border-radius: 8px;
-  text-decoration: none;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    position: relative; /* script.js ажиллахаар absolute болно */
+    white-space: nowrap; /* Текст нэг мөрөнд байх */
 }
+
