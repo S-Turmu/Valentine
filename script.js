@@ -15,7 +15,7 @@ function moveRandomEl(elm) {
 const moveRandom = document.querySelector("#move-random");
 
 // 1. Солих мессежүүдээ энд зарлана
-const messages = ["You can't catch me!", "Still No?", "Try harder! 😎", "Wrong button!", "Pwease? 🥺"];
+const messages = ["You can't catch me!", "No", "Pwease? 🥺", "buru tovch 🥀", "ugu ymu? 🥺", "darulku ymcn 😜"];
 
 // 2. Хулганатай үед (Desktop)
 moveRandom.addEventListener("mouseenter", function (e) {
@@ -36,3 +36,4 @@ moveRandom.addEventListener("touchstart", function (e) {
 moveRandom.addEventListener("click", function (e) {
   e.preventDefault();
 });
+
