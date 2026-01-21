@@ -52,45 +52,24 @@ body {
   100% { transform: scale(var(--scale-size)); }
 }
 
-/* 2. "Yes" товчлуурын үндсэн загвар (Бүх хуудсанд ижил) */
-#yes-btn, .btn a[href="yes.html"] {
-  background-color: #ff4d6d !important;
-  color: white !important;
-  display: inline-block;
-  white-space: nowrap;
-  z-index: 1;
-}
-
-/* 3. no3.html дээрх Pulse эффект (Зөвхөн ID-тай товчлуурт) */
+/* 2. Зөвхөн no3.html-ийн Yes товчлуурт (ID-аар нь) зориулсан загвар */
 #yes-btn {
   --scale-size: 2.5; /* Компьютер дээрх хэмжээ */
+  display: inline-block;
+  background-color: #ff4d6d !important;
+  color: white !important;
   animation: pulse 1.5s infinite;
   transform: scale(var(--scale-size));
-}
-
-/* 4. "No" товчлуурын тохиргоо */
-#move-random {
-  position: relative;
   white-space: nowrap;
+  text-decoration: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-weight: bold;
 }
 
-/* 5. Хуудас бүрийн "Yes" товчлуурын өөр өөр хэмжээ */
-/* no1.html дээр 1.25 */
-body:has(a[href="no2.html"]) .btn a[href="yes.html"] { transform: scale(1.25); }
-
-/* no2.html дээр 1.6 */
-body:has(a[href="no3.html"]) .btn a[href="yes.html"] { transform: scale(1.6); }
-
-/* 6. ГАР УТАСНЫ ТОХИРГОО (Responsive) */
+/* 3. Утас дээр хэт том харагдуулахгүй байх тохиргоо */
 @media (max-width: 600px) {
   #yes-btn {
-    --scale-size: 1.5; /* Утас дээр арай жижиг 1.5 */
-  }
-  
-  body:has(a[href="no2.html"]) .btn a[href="yes.html"] { transform: scale(1.15); }
-  body:has(a[href="no3.html"]) .btn a[href="yes.html"] { transform: scale(1.3); }
-
-  .container {
-    gap: 15px;
+    --scale-size: 1.6; /* Утас дээр 1.6 дахин томруулна */
   }
 }
