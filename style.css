@@ -41,3 +41,35 @@ body {
   border-radius: 8px;
   box-shadow: 0.5rem 1rem 3rem hsl(0, 0%, 0%, 0.3);
 }
+
+/* Утас дээр товчлуур зугтах зайг бэлдэх */
+.btn-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 200px; /* Товчлуур гүйх талбай */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Yes товчлуурыг хөдөлгөөнгүй, тод болгох */
+#yes-btn {
+  text-decoration: none;
+  color: white;
+  background: #ff4d6d; /* Тод ягаан */
+  padding: 12px 30px;
+  border-radius: 8px;
+  font-weight: bold;
+  z-index: 1; /* Ард нь байх */
+}
+
+/* No товчлуурыг Yes-ийн дээр гаргах */
+#move-random {
+  z-index: 10; 
+  background: #fff;
+  color: #111;
+  padding: 10px 25px;
+  border-radius: 8px;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
