@@ -59,32 +59,18 @@ body {
 
 @keyframes pulse {
   0% {
-    transform: scale(2); /* Анхны хэмжээ нь 2 дахин том */
-    box-shadow: 0 0 0 0 rgba(255, 77, 109, 0.7);
+    transform: scale(3); /* no2-оос том буюу 3-аас эхэлнэ */
   }
   70% {
-    transform: scale(2.2); /* Цохилж томрохдоо 2.2 болно */
-    box-shadow: 0 0 0 20px rgba(255, 77, 109, 0);
+    transform: scale(3.3); /* Цохилохдоо 3.3 болно */
   }
   100% {
-    transform: scale(2); /* Буцаад 2 болно */
-    box-shadow: 0 0 0 0 rgba(255, 77, 109, 0);
+    transform: scale(3);
   }
 }
 
-/* 2. "Yes" товчлуурын загварыг шинэчлэх */
-#yes-btn, .btn a[href="yes.html"] {
-  background-color: #ff4d6d !important;
-  color: white !important;
-  animation: pulse 1.5s infinite; /* Энд pulse эффект холбогдож байна */
-  border: none;
-  cursor: pointer;
+#yes-btn {
+  transform: scale(3); /* Үндсэн хэмжээ нь 3 */
+  animation: pulse 1.5s infinite;
   display: inline-block;
-  text-decoration: none;
-  
-  /* Энэ мөр маш чухал: товчлуурыг анхнаас нь том байлгана */
-  transform: scale(2); 
-  
-  /* Товчлуур томрох үед текст хагарахгүй байх */
-  white-space: nowrap;
 }
