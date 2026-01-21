@@ -57,43 +57,34 @@ body {
     white-space: nowrap; /* Текст нэг мөрөнд байх */
 }
 
-@keyframes heart-float {
-  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-  100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
-}
-
-.heart {
-  position: fixed;
-  bottom: -10px;
-  color: #ff4d6d;
-  font-size: 20px;
-  pointer-events: none;
-  animation: heart-float 4s linear infinite;
-}
-
-/* 1. Хөдөлгөөний дүрмийг тодорхойлох (Зүрхний цохилт шиг) */
 @keyframes pulse {
   0% {
-    transform: scale(1);
+    transform: scale(2); /* Анхны хэмжээ нь 2 дахин том */
     box-shadow: 0 0 0 0 rgba(255, 77, 109, 0.7);
   }
   70% {
-    transform: scale(1.1);
-    box-shadow: 0 0 0 15px rgba(255, 77, 109, 0);
+    transform: scale(2.2); /* Цохилж томрохдоо 2.2 болно */
+    box-shadow: 0 0 0 20px rgba(255, 77, 109, 0);
   }
   100% {
-    transform: scale(1);
+    transform: scale(2); /* Буцаад 2 болно */
     box-shadow: 0 0 0 0 rgba(255, 77, 109, 0);
   }
 }
 
-/* 2. Энэ хөдөлгөөнийг "Yes" товчлуур дээрээ холбох */
+/* 2. "Yes" товчлуурын загварыг шинэчлэх */
 #yes-btn, .btn a[href="yes.html"] {
-  background-color: #ff4d6d; /* Тод ягаан өнгө */
-  color: white;
-  animation: pulse 1.5s infinite; /* 1.5 секунд тутамд зогсолтгүй давтана */
+  background-color: #ff4d6d !important;
+  color: white !important;
+  animation: pulse 1.5s infinite; /* Энд pulse эффект холбогдож байна */
   border: none;
   cursor: pointer;
   display: inline-block;
   text-decoration: none;
+  
+  /* Энэ мөр маш чухал: товчлуурыг анхнаас нь том байлгана */
+  transform: scale(2); 
+  
+  /* Товчлуур томрох үед текст хагарахгүй байх */
+  white-space: nowrap;
 }
