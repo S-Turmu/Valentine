@@ -54,7 +54,7 @@ body {
 
 /* 2. Зөвхөн no3.html-ийн Yes товчлуурт (ID-аар нь) зориулсан загвар */
 #yes-btn {
-  --scale-size: 2.5; /* Компьютер дээрх хэмжээ */
+  --scale-size: 2; /* Компьютер дээрх хэмжээ */
   display: inline-block;
   background-color: #ff4d6d !important;
   color: white !important;
@@ -73,3 +73,4 @@ body {
     --scale-size: 1.6; /* Утас дээр 1.6 дахин томруулна */
   }
 }
+
