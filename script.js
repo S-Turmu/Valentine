@@ -1,14 +1,12 @@
 function moveRandomEl(elm) {
   elm.style.position = "fixed"; 
   
-  // Дэлгэцийн хэмжээг тооцох
   const padding = 20;
   const maxX = window.innerWidth - elm.clientWidth - padding;
   const maxY = window.innerHeight - elm.clientHeight - padding;
 
-  // Санамсаргүй байрлал (0-ээс дэлгэцийн төгсгөл хүртэл)
-  const randomX = Math.max(padding, Math.floor(Math.random() * maxX));
-  const randomY = Math.max(padding, Math.floor(Math.random() * maxY));
+  const randomX = Math.floor(Math.random() * maxX);
+  const randomY = Math.floor(Math.random() * maxY);
 
   elm.style.left = randomX + "px";
   elm.style.top = randomY + "px";
@@ -16,18 +14,25 @@ function moveRandomEl(elm) {
 
 const moveRandom = document.querySelector("#move-random");
 
-// Утас дээр (Хуруугаар хүрэхэд л шууд зугтана)
-moveRandom.addEventListener("touchstart", function (e) {
-  e.preventDefault(); // "Yes" дээр давхар дарагдахаас сэргийлнэ
-  moveRandomEl(e.target);
-}, { passive: false });
+// 1. Солих мессежүүдээ энд зарлана
+const messages = ["You can't catch me!", "Still No?", "Try harder! 😎", "Wrong button!", "Pwease? 🥺"];
 
-// Хулганатай үед (Desktop)
+// 2. Хулганатай үед (Desktop)
 moveRandom.addEventListener("mouseenter", function (e) {
   moveRandomEl(e.target);
+  // Текстийг санамсаргүйгээр солих
+  e.target.innerText = messages[Math.floor(Math.random() * messages.length)];
 });
 
-// Click хийх оролдлогыг хаах
+// 3. Утас дээр (Mobile - Touch)
+moveRandom.addEventListener("touchstart", function (e) {
+  e.preventDefault();
+  moveRandomEl(e.target);
+  // Утас дээр ч бас текстийг нь солино
+  e.target.innerText = messages[Math.floor(Math.random() * messages.length)];
+}, { passive: false });
+
+// Click хийхийг хаах
 moveRandom.addEventListener("click", function (e) {
   e.preventDefault();
 });
