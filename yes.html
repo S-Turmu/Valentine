@@ -3,8 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Yattaaa!!</title>
-
+    <title>Yattaaa!! 😘</title>
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
@@ -16,58 +15,39 @@
         data-aspect-ratio="1.37853"
         data-width="100%"
       >
-        <a
-          href="https://tenor.com/view/mochi-cat-mochi-and-goma-goma-and-peach-mochi-mochi-peach-cat-gif-gif-253027946666209433"
-          >Mochi Cat GIF</a
-        >from <a href="https://tenor.com/search/mochi-gifs">Mochi GIFs</a>
+        <a href="https://tenor.com/view/mochi-cat-mochi-and-goma-goma-and-peach-mochi-mochi-peach-cat-gif-gif-253027946666209433">Mochi Cat GIF</a>
       </div>
-      <script
-        type="text/javascript"
-        async
-        src="https://tenor.com/embed.js"
-      ></script>
+      <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+      
       <h1>Hehehehe, I knew it! 😘</h1>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
-<script>
-  confetti({
-    particleCount: 150,
-    spread: 70,
-    origin: { y: 0.6 },
-    colors: ['#ff4d6d', '#ffb3c1', '#ffffff']
-  });
-</script>
-    <audio id="bgMusic" src="music.mp3" loop></audio>
-
-<script>
-  window.addEventListener('load', () => {
-    const audio = document.getElementById('bgMusic');
     
-    // 1. Хадгалсан цагийг шалгаж, тэндээс нь эхлүүлэх
-    const savedTime = localStorage.getItem('musicPosition');
-    if (savedTime) {
-      audio.currentTime = parseFloat(savedTime);
-    }
+    <audio id="yesMusic" src="music.mp3" loop preload="auto"></audio>
 
-    // 2. Хэрэглэгч дэлгэц дээр нэг дарахад дуу явж эхэлнэ
-    document.body.addEventListener('click', () => {
-      if (audio.paused) {
-        audio.play().catch(e => console.log("Дуу тоглуулахад алдаа гарлаа:", e));
-      }
-    }, { once: true });
+    <script>
+      window.addEventListener('DOMContentLoaded', () => {
+        // 1. Салют шууд буудна
+        confetti({
+          particleCount: 150,
+          spread: 70,
+          origin: { y: 0.6 },
+          colors: ['#ff4d6d', '#ffb3c1', '#ffffff']
+        });
 
-    // 3. Дууны цагийг 0.5 секунд тутамд localStorage-д хадгалах
-    setInterval(() => {
-      if (!audio.paused) {
-        localStorage.setItem('musicPosition', audio.currentTime);
-      }
-    }, 500);
-  });
-</script>
+        const audio = document.getElementById('yesMusic');
+
+        // 2. Хэрэглэгч дэлгэц дээр нэг дарахад дуу явна
+        const playMusic = () => {
+          audio.play().catch(e => console.log("Дуу тоглуулах боломжгүй:", e));
+          document.removeEventListener('click', playMusic);
+          document.removeEventListener('touchstart', playMusic);
+        };
+
+        document.addEventListener('click', playMusic);
+        document.addEventListener('touchstart', playMusic);
+      });
+    </script>
   </body>
 </html>
-
-
-
-
-
