@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>valentine</title>
-
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
@@ -16,52 +15,56 @@
         data-aspect-ratio="1.04918"
         data-width="100%"
       >
-        <a href="https://tenor.com/view/manja-gif-22885016">Manja Sticker</a
-        >from
+        <a href="https://tenor.com/view/manja-gif-22885016">Manja Sticker</a>
+        from
         <a href="https://tenor.com/search/manja-stickers">Manja Stickers</a>
       </div>
-      <script
-        type="text/javascript"
-        async
-        src="https://tenor.com/embed.js"
-      ></script>
+      <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+
       <h1>Be my Valentine? 🌹</h1>
       <p>-Turmu</p>
+
       <div class="btn">
         <a href="yes.html">Yes</a>
         <a href="no1.html">No</a>
       </div>
     </div>
-    <audio id="bgMusic" src="music.mp3" loop></audio>
 
-<script>
-  window.addEventListener('load', () => {
-    const audio = document.getElementById('bgMusic');
-    
-    // 1. Хадгалсан цагийг шалгаж, тэндээс нь эхлүүлэх
-    const savedTime = localStorage.getItem('musicPosition');
-    if (savedTime) {
-      audio.currentTime = parseFloat(savedTime);
-    }
+    <audio id="bgMusic" src="music.mp3" loop preload="auto"></audio>
 
-    // 2. Хэрэглэгч дэлгэц дээр нэг дарахад дуу явж эхэлнэ
-    document.body.addEventListener('click', () => {
-      if (audio.paused) {
-        audio.play().catch(e => console.log("Дуу тоглуулахад алдаа гарлаа:", e));
-      }
-    }, { once: true });
+    <script>
+      // 1. Кодыг DOMContentLoaded дээр ажиллуулах нь илүү найдвартай
+      window.addEventListener('DOMContentLoaded', () => {
+        const audio = document.getElementById('bgMusic');
 
-    // 3. Дууны цагийг 0.5 секунд тутамд localStorage-д хадгалах
-    setInterval(() => {
-      if (!audio.paused) {
-        localStorage.setItem('musicPosition', audio.currentTime);
-      }
-    }, 500);
-  });
-</script>
+        // 2. Хадгалсан цагийг шалгах
+        const savedTime = localStorage.getItem('musicPosition');
+        if (savedTime) {
+          audio.currentTime = parseFloat(savedTime);
+        }
+
+        // 3. Дуу тоглуулах функц
+        const startPlayback = () => {
+          audio.play()
+            .then(() => console.log("Дуу амжилттай тоглов"))
+            .catch(e => console.log("Тоглуулах боломжгүй:", e));
+          
+          // Нэг удаа ажиллаад үйл явдлуудыг устгана
+          document.removeEventListener('click', startPlayback);
+          document.removeEventListener('touchstart', startPlayback);
+        };
+
+        // 4. Дэлгэц дээр хаана ч дарсан дуу эхэлнэ (Autoplay-ийг идэвхжүүлэх)
+        document.addEventListener('click', startPlayback);
+        document.addEventListener('touchstart', startPlayback);
+
+        // 5. Цагийг хадгалах
+        setInterval(() => {
+          if (!audio.paused) {
+            localStorage.setItem('musicPosition', audio.currentTime);
+          }
+        }, 500);
+      });
+    </script>
   </body>
 </html>
-
-
-
-
