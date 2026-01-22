@@ -29,42 +29,6 @@
         <a href="no1.html">No</a>
       </div>
     </div>
-
-    <audio id="bgMusic" src="music.mp3" loop preload="auto"></audio>
-
-    <script>
-      // 1. Кодыг DOMContentLoaded дээр ажиллуулах нь илүү найдвартай
-      window.addEventListener('DOMContentLoaded', () => {
-        const audio = document.getElementById('bgMusic');
-
-        // 2. Хадгалсан цагийг шалгах
-        const savedTime = localStorage.getItem('musicPosition');
-        if (savedTime) {
-          audio.currentTime = parseFloat(savedTime);
-        }
-
-        // 3. Дуу тоглуулах функц
-        const startPlayback = () => {
-          audio.play()
-            .then(() => console.log("Дуу амжилттай тоглов"))
-            .catch(e => console.log("Тоглуулах боломжгүй:", e));
-          
-          // Нэг удаа ажиллаад үйл явдлуудыг устгана
-          document.removeEventListener('click', startPlayback);
-          document.removeEventListener('touchstart', startPlayback);
-        };
-
-        // 4. Дэлгэц дээр хаана ч дарсан дуу эхэлнэ (Autoplay-ийг идэвхжүүлэх)
-        document.addEventListener('click', startPlayback);
-        document.addEventListener('touchstart', startPlayback);
-
-        // 5. Цагийг хадгалах
-        setInterval(() => {
-          if (!audio.paused) {
-            localStorage.setItem('musicPosition', audio.currentTime);
-          }
-        }, 500);
-      });
-    </script>
   </body>
 </html>
+
