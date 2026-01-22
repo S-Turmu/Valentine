@@ -38,10 +38,37 @@
         <a href="#" id="move-random">No</a>
       </div>
     </div>
-
     <script src="./script.js"></script>
+    <audio id="bgMusic" src="music.mp3" loop></audio>
+
+<script>
+  window.addEventListener('load', () => {
+    const audio = document.getElementById('bgMusic');
+    
+    // 1. Хадгалсан цагийг шалгаж, тэндээс нь эхлүүлэх
+    const savedTime = localStorage.getItem('musicPosition');
+    if (savedTime) {
+      audio.currentTime = parseFloat(savedTime);
+    }
+
+    // 2. Хэрэглэгч дэлгэц дээр нэг дарахад дуу явж эхэлнэ
+    document.body.addEventListener('click', () => {
+      if (audio.paused) {
+        audio.play().catch(e => console.log("Дуу тоглуулахад алдаа гарлаа:", e));
+      }
+    }, { once: true });
+
+    // 3. Дууны цагийг 0.5 секунд тутамд localStorage-д хадгалах
+    setInterval(() => {
+      if (!audio.paused) {
+        localStorage.setItem('musicPosition', audio.currentTime);
+      }
+    }, 500);
+  });
+</script>
   </body>
 </html>
+
 
 
 
